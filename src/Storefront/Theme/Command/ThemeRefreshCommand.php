@@ -32,7 +32,9 @@ class ThemeRefreshCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $this->themeLifecycleService->refreshThemes($this->context);
+        $refreshed = $this->themeLifecycleService->refreshThemes($this->context);
+        
+        $output->writeln('Refreshed themes: ' . implode(', ', $refreshed));
 
         return 0;
     }
